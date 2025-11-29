@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelHelp | Handcrafted Journeys</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: 'Outfit' for headings, 'Inter' for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-font {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Clean White Hero Background */
+        .bg-hero {
+            background-color: #ffffff;
+            /* Subtle pattern to add texture without being an image */
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+            min-height: 100vh;
+        }
+
+        /* Improved Glassmorphism - adjusted for light bg */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        .glass-dark {
+            background: #1e293b; /* Solid dark slate for nav */
+            color: white;
+        }
+
+        /* Card Hover Effects */
+        .destination-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .destination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-dark transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center cursor-pointer group">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3 transform group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-compass text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="brand-font font-bold text-2xl text-white tracking-tight">Travel<span class="text-blue-400">Help</span></span>
+                        <p class="text-xs text-gray-400 -mt-1 font-medium">Explore More.</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-white transition">Explore</a>
+                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-white transition">Your Trips</a>
+                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-white transition">Saved</a>
+                    <div class="h-6 w-px bg-gray-700 mx-2"></div>
+                    <button class="text-sm font-semibold bg-white text-slate-900 px-5 py-2.5 rounded-full hover:bg-blue-50 transition shadow-lg hover:shadow-xl">
+                        Sign In
+                    </button>
+                </div>
+                <!-- Mobile menu -->
+                <button class="md:hidden text-white text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="min-h-screen relative pb-20">
+        
+        <!-- HERO SECTION -->
+        <div id="home-section" class="relative">
+            <!-- Hero Background -->
+            <div class="bg-hero flex flex-col items-center justify-center px-4 pt-32 pb-48">
+                
+                <div class="text-center mb-10 animate-fade-in max-w-3xl">
+                    <span class="inline-block py-1 px-3 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-4">
+                        ✈️  Travel smarter, not harder
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight">
+                        Find your path to <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">paradise.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
+                        We compare air, rail, and road to find the perfect journey for your budget and schedule.
+                    </p>
+                </div>
+
+                <!-- Search Widget -->
+                <div class="glass-panel w-full max-w-5xl rounded-3xl p-6 md:p-8 animate-fade-in relative z-10 border border-gray-200 shadow-xl" style="animation-delay: 0.1s;">
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6 items-end">
+                            <!-- Source -->
+                            <div class="md:col-span-4">
+                                <label class="block text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 ml-1">From</label>
+                                <div class="relative group">
+                                    <i class="fas fa-circle-dot absolute left-4 top-4 text-blue-500 text-xs"></i>
+                                    <input class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition font-medium text-gray-800 group-hover:bg-white" 
+                                        id="source" type="text" placeholder="City or Airport" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Swap Button (Visual only) -->
+                            <div class="hidden md:flex md:col-span-1 justify-center pb-2">
+                                <button type="button" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-400 transition">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+
+                            <!-- Destination -->
+                            <div class="md:col-span-4">
+                                <label class="block text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 ml-1">To</label>
+                                <div class="relative group">
+                                    <i class="fas fa-location-dot absolute left-4 top-4 text-red-500 text-xs"></i>
+                                    <input class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition font-medium text-gray-800 group-hover:bg-white" 
+                                        id="destination" type="text" placeholder="Dream Destination" required>
+                                </div>
+                            </div>
+
+                             <!-- Date Picker -->
+                             <div class="md:col-span-3">
+                                <label class="block text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 ml-1">When</label>
+                                <div class="relative group">
+                                    <i class="fas fa-calendar absolute left-4 top-4 text-gray-400 text-xs"></i>
+                                    <input class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition font-medium text-gray-800 cursor-pointer" 
+                                        id="travel-date" type="date" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Options & Submit -->
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-gray-100 pt-6">
+                            
+                            <!-- Custom Radio Buttons -->
+                            <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+                                <label class="cursor-pointer relative">
+                                    <input type="radio" name="mode" value="hybrid" class="peer sr-only" checked>
+                                    <div class="px-5 py-2.5 rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 peer-checked:bg-slate-800 peer-checked:text-white peer-checked:border-slate-800 transition text-sm font-medium flex items-center gap-2 whitespace-nowrap">
+                                        <i class="fas fa-wand-magic-sparkles"></i> Best Mix
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer relative">
+                                    <input type="radio" name="mode" value="air" class="peer sr-only">
+                                    <div class="px-5 py-2.5 rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600 transition text-sm font-medium flex items-center gap-2">
+                                        <i class="fas fa-plane"></i> Flight
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer relative">
+                                    <input type="radio" name="mode" value="rail" class="peer sr-only">
+                                    <div class="px-5 py-2.5 rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 peer-checked:bg-orange-600 peer-checked:text-white peer-checked:border-orange-600 transition text-sm font-medium flex items-center gap-2">
+                                        <i class="fas fa-train"></i> Train
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer relative">
+                                    <input type="radio" name="mode" value="road" class="peer sr-only">
+                                    <div class="px-5 py-2.5 rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 peer-checked:bg-green-600 peer-checked:text-white peer-checked:border-green-600 transition text-sm font-medium flex items-center gap-2">
+                                        <i class="fas fa-bus"></i> Bus
+                                    </div>
+                                </label>
+                            </div>
+
+                            <button type="button" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-xl shadow-lg shadow-blue-500/30 transform transition hover:scale-[1.02] flex items-center justify-center gap-3">
+                                <span>Let's Go</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- TRENDING SECTION -->
+            <div class="container mx-auto px-4 -mt-24 relative z-0 pb-20">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center">
+                    <i class="fas fa-fire text-orange-500 mr-2"></i> Trending This Week
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="destination-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 cursor-pointer">
+                        <div class="h-48 bg-gray-200 relative">
+                            <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-gray-800">
+                                Goa, India
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium text-gray-500">From Delhi</span>
+                                <span class="text-blue-600 font-bold">₹4,500+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="destination-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 cursor-pointer">
+                        <div class="h-48 bg-gray-200 relative">
+                            <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-gray-800">
+                                Jaipur, Rajasthan
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium text-gray-500">From Mumbai</span>
+                                <span class="text-blue-600 font-bold">₹2,200+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="destination-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 cursor-pointer">
+                        <div class="h-48 bg-gray-200 relative">
+                            <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-gray-800">
+                                Kerala Backwaters
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium text-gray-500">From Bangalore</span>
+                                <span class="text-blue-600 font-bold">₹1,800+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Map FAB (Static) -->
+    <a href="https://www.google.com/maps" target="_blank" id="map-help-btn" class="fixed bottom-8 right-8 z-40 bg-white text-slate-800 p-3 rounded-full shadow-2xl border border-gray-100 flex items-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/20 group no-underline">
+        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+            <i class="fas fa-location-arrow"></i>
+        </div>
+        <div class="flex flex-col text-left pr-2">
+            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Navigate</span>
+            <span class="font-bold text-sm leading-none">Open Maps</span>
+        </div>
+    </a>
+
+    <!-- Professional Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <span class="brand-font font-bold text-xl text-slate-800 tracking-tight">Travel<span class="text-blue-600">Help</span></span>
+                    <p class="text-gray-500 text-sm mt-4 leading-relaxed max-w-xs">
+                        Making travel simple, transparent, and accessible for everyone. We believe the journey is just as important as the destination.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-slate-800 mb-4">Explore</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-blue-600">Flights</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Trains</a></li>
+                        <li><a href="https://www.oyorooms.com/" target="_blank" class="hover:text-blue-600">Hotels</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Holiday Packages</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-slate-800 mb-4">Company</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-blue-600">About Us</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Careers</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+                <p>&copy; 2023 TravelHelp Inc. All rights reserved.</p>
+                <div class="flex items-center gap-2 mt-4 md:mt-0">
+                    <span>Crafted with <i class="fas fa-heart text-red-400 mx-1"></i> by Divyanshu Kumar Singh</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
